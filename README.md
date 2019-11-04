@@ -12,7 +12,7 @@ Change **minSdkVersion to 19** in your app
 ```
  defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.test_getnet_pos_package"
+        applicationId "com.example.test_rede_pos_package"
         minSdkVersion 19
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
