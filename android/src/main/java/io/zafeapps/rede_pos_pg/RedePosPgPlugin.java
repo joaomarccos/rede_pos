@@ -9,6 +9,8 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
+import rede.smartrede.sdk.FlexTipoPagamento;
+import rede.smartrede.sdk.RedePayments;
 
 /**
  * RedePosPgPlugin
@@ -28,22 +30,29 @@ public class RedePosPgPlugin implements MethodCallHandler, PluginRegistry.Activi
     private Result result;
     private Activity activity;
     private int requestCode;
+    private RedePayments redePayments;
 
     public RedePosPgPlugin(MethodChannel methodChannel, Activity activity) {
         this.methodChannel = methodChannel;
         this.activity = activity;
+        this.redePayments = RedePayments.getInstance(activity);
     }
 
     @Override
     public void onMethodCall(MethodCall call, Result result) {
+        getPlataformVersion(call, result);
+    }
 
+    private void getPlataformVersion(MethodCall call, Result result) {
         if (call.method.equals("getPlatformVersion")) {
             result.success("Android " + android.os.Build.VERSION.RELEASE);
         } else {
             result.notImplemented();
         }
+    }
 
-
+    private void mountPayment(MethodCall call, Result result) {
+//        mout payment from call data and handle result on activity result
     }
 
     @Override
