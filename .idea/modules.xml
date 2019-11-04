@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/rede_pos_pg.iml" filepath="$PROJECT_DIR$/rede_pos_pg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/rede_pos_pg_android.iml" filepath="$PROJECT_DIR$/android/rede_pos_pg_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/example/android/rede_pos_pg_example_android.iml" filepath="$PROJECT_DIR$/example/android/rede_pos_pg_example_android.iml" />
+    </modules>
+  </component>
+</project>
