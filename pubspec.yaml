@@ -1,6 +1,6 @@
 name: rede_pos_pg
 description: This is a plugin wrapper to handle calls to rede pos hardware sdk.
-version: 0.0.2
+version: 0.0.3
 author: João Marcos Ferreira <joaomarccos.ads@gmail.com>
 homepage: https://github.com/joaomarccos/rede_pos
 

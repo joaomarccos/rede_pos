@@ -7,3 +7,7 @@
 * Payments
 * Reversal
 * Reprint
+
+## 0.0.3
+
+* bug fix

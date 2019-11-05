@@ -20,7 +20,7 @@ class RedePosPg {
   /// DECLINED: Transação negada.
   static Future<String> startPayment(PaymentType paymentType, int ammount, {int installments = 0}) async {
     final String result = await _channel.invokeMethod('payment', {
-      'paymentType': paymentType.toString(),
+      'paymentType': paymentType.toString().replaceAll("PaymentType.", ""),
       'ammount': ammount,
       'installments': installments
     });
