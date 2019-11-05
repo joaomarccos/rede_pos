@@ -72,8 +72,8 @@ public class RedePosPgPlugin implements MethodCallHandler, PluginRegistry.Activi
         if (call.method.equals("payment")) {
             try {
                 FlexTipoPagamento paymentType = FlexTipoPagamento.valueOf(call.<String>argument("paymentType"));
-                Long ammount = call.<Long>argument("ammount");
-                Integer installments = call.<Integer>argument("installments");
+                Long ammount = Long.parseLong(Objects.requireNonNull(call.argument("ammount")).toString());
+                int installments = Integer.parseInt(Objects.requireNonNull(call.argument("installments")).toString());
                 PaymentIntentBuilder paymentIntentBuilder = redePayments.intentForPaymentBuilder(paymentType, ammount);
                 if (installments > 1) paymentIntentBuilder.setInstallments(installments);
                 Intent intent = paymentIntentBuilder.build();
