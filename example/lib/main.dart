@@ -12,7 +12,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
+  String _results = 'Unknown';
 
   @override
   void initState() {
@@ -22,12 +22,22 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    String platformVersion;
+    String transactionResults = "";
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      platformVersion = await RedePosPg.platformVersion;
+      // payment: R$90,00 in 3x
+      var operationStatus = await RedePosPg.startPayment(PaymentType.CREDITO_PARCELADO, 9000, installments: 3);      
+      transactionResults += "payment: R\$90,00 in 3x: [$operationStatus]\n";
+      // payment: R$1,00
+      operationStatus = await RedePosPg.startPayment(PaymentType.CREDITO_A_VISTA, 100);
+      transactionResults += "payment: R\$1,00: [$operationStatus]\n";
+      // reversal
+      operationStatus = await RedePosPg.startReversal();
+      transactionResults += "reversal: [$operationStatus]\n";
+      operationStatus = await RedePosPg.startReprint() ? "Success" :  "Failure";
+      transactionResults += "reprint: [$operationStatus]\n";
     } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
+      transactionResults = 'Failed.';
     }
 
     // If the widget was removed from the tree while the asynchronous platform
@@ -36,7 +46,7 @@ class _MyAppState extends State<MyApp> {
     if (!mounted) return;
 
     setState(() {
-      _platformVersion = platformVersion;
+      _results = transactionResults;
     });
   }
 
@@ -48,7 +58,7 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child: Text('Running on: $_results\n'),
         ),
       ),
     );

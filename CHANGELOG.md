@@ -1,3 +1,9 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+* Setup
+
+## 0.0.2
+
+* Payments
+* Reversal
+* Reprint

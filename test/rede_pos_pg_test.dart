@@ -16,6 +16,6 @@ void main() {
   });
 
   test('getPlatformVersion', () async {
-    expect(await RedePosPg.platformVersion, '42');
+    expect(await RedePosPg.startReversal(), '42');
   });
 }
